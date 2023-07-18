@@ -1,16 +1,45 @@
+const COLOR_KA = "#fedc45";
+const COLOR_MA = "#000000";
+const COLOR_KU = "#282828";
+const COLOR_RA = "#e4e4e4";
+const COLOR_ND = "#f6f6f6";
+const COLOR_OM = "#ffffff"
+
+const KMKR_COLORS = [
+  COLOR_KA,
+  COLOR_MA,
+  COLOR_MA,
+
+  COLOR_MA,
+  COLOR_ND,
+  COLOR_KU,
+
+  COLOR_OM,
+  COLOR_OM,
+  COLOR_RA,
+
+  COLOR_OM,
+  COLOR_MA,
+  COLOR_OM,
+
+  COLOR_MA,
+  COLOR_OM,
+  COLOR_OM,
+
+  COLOR_OM,
+  COLOR_KA,
+  COLOR_OM,
+];
+
+
 const changeColors = function () {
-  const classList = [
-    document.getElementById("logo").getElementsByClassName("ka"),
-    document.getElementById("logo").getElementsByClassName("ma"),
-    document.getElementById("logo").getElementsByClassName("ku"),
-    document.getElementById("logo").getElementsByClassName("ra"),
-    document.getElementById("logo").getElementsByClassName("overflow")
-  ];
-  for (let i = 0; i < classList.length; i++) {
-    const color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-    for (const element of classList[i]) {
-      element.style.fill = color;
-    }
+
+  const KMKR_RENDER = [...KMKR_COLORS]
+    .map(v => ({ v, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort).map(({ v }) => v);
+
+  for (let i = 0; i < KMKR_RENDER.length; i++) {
+    document.getElementById("logo").getElementById(i).style.fill = KMKR_RENDER[i];
   }
 };
 
